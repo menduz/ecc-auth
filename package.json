@@ -1,0 +1,28 @@
+{
+  "name": "ecc-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menduz/ecc-auth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/menduz/ecc-auth/issues"
+  },
+  "homepage": "https://github.com/menduz/ecc-auth#readme",
+  "devDependencies": {
+    "@types/secp256k1": "^4.0.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "secp256k1": "^4.0.2"
+  }
+}
