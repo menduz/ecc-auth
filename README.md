@@ -1,34 +1,16 @@
 # ecc-auth
 
-Normalized API for browser and node.js
+What is this?
+
+* A library that normalizes the crypto API for browser and Node.js
+* A library to sign fetch requests using `secp256k1`
+* A middleware to validate those signatures from `express`
+* Uses the native `crypto` in the browser and the built in Node.js package
 
 ### Install
 
 ```bash
 npm install --save ecc-auth
-```
-
-### Usage of the plain ECC functions
-
-```ts
-// from Node.js
-import * as ecc from "ecc-auth/node";
-
-// from Browser
-import * as ecc from "ecc-auth/browser";
-
-// generate keys
-const keys = ecc.generateKeyPair();
-
-const payload = toHex("Hi there!");
-
-// sign payload
-const sig = await signUint8Array(payload, keys.privateKey);
-
-// validate signature
-assert(
-  true == (await isSignatureValid(sig.signature, payload, keys.publicKey))
-);
 ```
 
 ### Usage to authenticate requests
@@ -66,9 +48,32 @@ function authenticatePublicKey(request, response, next) {
   }
 }
 
-app.get("/me", requireSignature(), authenticatePublicKey, function (req, res) {
+app.get("/me", requireSignature(), authorizePublicKey, function (req, res) {
   res.send("Hi there!");
 });
+```
+
+### Usage of the plain ECC functions
+
+```ts
+// from Node.js
+import * as ecc from "ecc-auth/node";
+// from Browser
+import * as ecc from "ecc-auth/browser";
+
+
+// generate keys
+const keys = ecc.generateKeyPair();
+
+const payload = toHex("Hi there!");
+
+// sign payload
+const sig = await signUint8Array(payload, keys.privateKey);
+
+// validate signature
+assert(
+  true == (await isSignatureValid(sig.signature, payload, keys.publicKey))
+);
 ```
 
 ### Exposed interface
