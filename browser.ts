@@ -73,8 +73,8 @@ export function generateKeyPair(): Keys {
   }
 
   return {
-    ephemeralPublicKey: publicKeyCreate(privateKey),
-    ephemeralPrivateKey: privateKey,
+    publicKey: publicKeyCreate(privateKey),
+    privateKey: privateKey,
   };
 }
 

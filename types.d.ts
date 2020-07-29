@@ -1,6 +1,6 @@
 export type Keys = {
-  ephemeralPublicKey: Uint8Array;
-  ephemeralPrivateKey: Uint8Array;
+  publicKey: Uint8Array;
+  privateKey: Uint8Array;
 };
 
 export type Signature = {
